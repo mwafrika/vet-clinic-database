@@ -9,6 +9,17 @@ SELECT * from animals WHERE neutered=TRUE;
 SELECT * from animals WHERE name <> 'Gabumon';
 SELECT * from animals WHERE weight_kg >=10.4 and weight_kg <= 17.3;
 
-ALTER TABLE animals ADD COLUMN species VARCHAR(50);
+ALTER TABLE animals ADD species VARCHAR(50);
 
+BEGIN;
+update animals set species='unspecified' where species is null;
+ROLLBACK;
 
+BEGIN;
+UPDATE animals SET species='digimon' WHERE name LIKE '%mon';
+UPDATE animals SET species='pokemon' WHERE species is NULL;
+COMMIT;
+
+BEGIN;
+DELETE * FROM animals
+ROLLBACK;

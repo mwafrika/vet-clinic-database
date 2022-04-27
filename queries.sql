@@ -10,7 +10,6 @@ SELECT * from animals WHERE name <> 'Gabumon';
 SELECT * from animals WHERE weight_kg >=10.4 and weight_kg <= 17.3;
 
 -- day2 questions
-ALTER TABLE animals ADD species VARCHAR(50);
 
 BEGIN;
 update animals set species='unspecified' where species is null;
@@ -58,7 +57,6 @@ SELECT AVG(weight_kg) FROM animals;
 
 -- Who escapes the most, neutered or not neutered animals?
 SELECT name FROM animals WHERE escape_attempts=(SELECT MAX(escape_attempts) FROM animals)
-
 
 -- What is the minimum and maximum weight of each type of animal?
 SELECT MIN(weight_kg), MAX(weight_kg) FROM animals

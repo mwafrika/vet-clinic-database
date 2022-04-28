@@ -49,3 +49,15 @@ UPDATE animals SET owner_id=(SELECT id from owners WHERE full_name='Melody Pond'
 UPDATE animals SET owner_id=(SELECT id from owners WHERE full_name='Melody Pond') WHERE name='Blossom';
 UPDATE animals SET owner_id=(SELECT id from owners WHERE full_name='Dean Winchester') WHERE name='Angemon';
 UPDATE animals SET owner_id=(SELECT id from owners WHERE full_name='Dean Winchester') WHERE name='Boarmon';
+
+-- Insert the following data for vets:
+INSERT INTO vets(name,age,date_of_graduation) VALUES('William Tatcher',45,'2000/04/23');
+INSERT INTO vets(name,age,date_of_graduation) VALUES('Maisy Smith',26,'2019/01/17');
+INSERT INTO vets(name,age,date_of_graduation) VALUES('Stephanie Mendez',64,'1981/05/04');
+INSERT INTO vets(name,age,date_of_graduation) VALUES('Jack Harkness',38,'2008/06/08');
+
+-- Insert the following data for specialties:
+INSERT INTO specializations(vets_id,species_id) VALUES((SELECT id FROM vets WHERE name='William Tatcher'),(SELECT id FROM species WHERE name='Pokemon'));
+INSERT INTO specializations(vets_id,species_id) VALUES((SELECT id FROM vets WHERE name='Stephanie Mendez'),(SELECT id FROM species WHERE name='Pokemon'));
+INSERT INTO specializations(vets_id,species_id) VALUES((SELECT id FROM vets WHERE name='Stephanie Mendez'),(SELECT id FROM species WHERE name='Digimon'));
+INSERT INTO specializations(vets_id,species_id) VALUES((SELECT id FROM vets WHERE name='Jack Harkness'),(SELECT id FROM species WHERE name='Digimon'));

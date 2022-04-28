@@ -56,13 +56,29 @@ SELECT COUNT(*) from animals WHERE escape_attempts=0;
 SELECT AVG(weight_kg) FROM animals;
 
 -- Who escapes the most, neutered or not neutered animals?
-SELECT name FROM animals WHERE escape_attempts=(SELECT MAX(escape_attempts) FROM animals)
+SELECT name FROM animals WHERE escape_attempts=(SELECT MAX(escape_attempts) FROM animals);
 
 -- What is the minimum and maximum weight of each type of animal?
-SELECT MIN(weight_kg), MAX(weight_kg) FROM animals
+SELECT MIN(weight_kg), MAX(weight_kg) FROM animals;
 
 -- What is the average number of escape attempts per animal type of those born between 1990 and 2000?
 SELECT AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990/01/01' AND '2000/12/31';
 
 -- wenesday tasks
 
+-- Write queries (using JOIN) to answer the following questions:
+-- What animals belong to Melody Pond?
+-- List of all animals that are pokemon (their type is Pokemon).
+-- List all owners and their animals, remember to include those that don't own any animal.
+-- How many animals are there per species?
+-- List all Digimon owned by Jennifer Orwell.
+-- List all animals owned by Dean Winchester that haven't tried to escape.
+-- Who owns the most animals?            
+
+SELECT name FROM animals as a INNER JOIN owners as o ON a.owner_id = o.id WHERE o.full_name ='Melody Pond';
+SELECT a.name FROM animals as a INNER JOIN species as s ON species_id = s.id WHERE s.name ='Pokemon';
+SELECT o.full_name, a.name FROM owners as o FULL JOIN animals as a ON o.id = a.owner_id;
+SELECT s.name,COUNT(*) FROM animals as a INNER JOIN species as s ON a.species_id = s.id GROUP BY s.name;
+SELECT a.name FROM animals as a INNER JOIN owners as o ON a.species_id = o.id WHERE o.full_name='Jennifer Orwell';
+SELECT a.name FROM animals as a INNER JOIN owners as o ON a.owner_id = o.id WHERE o.full_name='Dean Winchester' AND a.escape_attempts=0;
+SELECT o.full_name, COUNT(*) as c FROM owners as o INNER JOIN animals as a ON a.owner_id = o.id GROUP BY o.full_name ORDER by c DESC LIMIT 1;

@@ -63,3 +63,6 @@ SELECT MIN(weight_kg), MAX(weight_kg) FROM animals
 
 -- What is the average number of escape attempts per animal type of those born between 1990 and 2000?
 SELECT AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990/01/01' AND '2000/12/31';
+
+-- wenesday tasks
+-- insert into species

@@ -8,6 +8,9 @@ ALTER TABLE animals ADD species VARCHAR(50);
 -- Create a table named owners with the following columns:
 CREATE TABLE owners(id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,full_name VARCHAR NOT NULL,age INT NOT NULL);
 
+-- Create a table named species with the following columns:
+CREATE TABLE species(id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name VARCHAR NOT NULL);
+
 -- Remove column species
 ALTER TABLE animals DROP species;
 

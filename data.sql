@@ -86,3 +86,7 @@ INSERT INTO visits(animals_id, vets_id, visit_date) VALUES((SELECT id from anima
 INSERT INTO visits(animals_id, vets_id, visit_date) VALUES((SELECT id from animals WHERE name='Blossom'),(SELECT id from vets WHERE name='William Tatcher'), '2021/01/11');
 
 
+
+
+
+

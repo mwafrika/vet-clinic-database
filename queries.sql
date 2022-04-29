@@ -82,3 +82,9 @@ SELECT s.name,COUNT(*) FROM animals as a INNER JOIN species as s ON a.species_id
 SELECT a.name FROM animals as a INNER JOIN owners as o ON a.species_id = o.id WHERE o.full_name='Jennifer Orwell';
 SELECT a.name FROM animals as a INNER JOIN owners as o ON a.owner_id = o.id WHERE o.full_name='Dean Winchester' AND a.escape_attempts=0;
 SELECT o.full_name, COUNT(*) as c FROM owners as o INNER JOIN animals as a ON a.owner_id = o.id GROUP BY o.full_name ORDER by c DESC LIMIT 1;
+
+-- Who was the last animal seen by William Tatcher?
+SELECT name FROM animals WHERE id = (SELECT animals_id FROM visits WHERE vets_id = (SELECT id FROM vets WHERE name LIKE 'William Tatcher') ORDER BY visit_date DESC limit 1);
+
+-- How many different animals did Stephanie Mendez see?
+SELECT COUNT(name) FROM animals as a JOIN visits as v ON a.id = v.animals_id WHERE v.vets_id=(SELECT id FROM vets WHERE name='Stephanie Mendez');

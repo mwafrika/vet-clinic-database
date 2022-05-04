@@ -41,3 +41,16 @@ CREATE TABLE visits(id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, animals_id 
 
 ALTER TABLE visits ADD FOREIGN KEY(animals_id) REFERENCES animals(id);
 ALTER TABLE visits ADD FOREIGN KEY(vets_id) REFERENCES vets(id);
+
+-- Add an email column to your owners table
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
+
+-- create index on owners table owners
+CREATE INDEX owner_email ON owners(email ASC);
+
+-- create index on vets table on column animals_id
+CREATE INDEX visits_animals_id ON visits(animals_id ASC);
+
+-- create index on vets table on column vets_id 
+CREATE INDEX visit_vets_id ON visits(vets_id ASC);

@@ -114,3 +114,12 @@ select count(*) from visits
 select species.name, count(*) from visits left join animals on animals.id = visits.animals_id 
     left join species ON animals.species_id = species.id
     left join vets ON vets.id = visits.vets_id where vets.name = 'Maisy Smith' group by species.name;
+
+-- analyze the execution time for owners table
+explain analyze SELECT * FROM owners where email = 'owner_18327@mail.com';
+
+-- and analyze the execution time for visits table
+explain analyze SELECT COUNT(*) FROM visits where animal_id = 4;
+
+-- analyze the execution time for visits table
+explain analyze SELECT * FROM visits where vet_id = 2;

@@ -1,5 +1,15 @@
 /* Database schema to keep the structure of entire database. */
 
+CREATE TABLE animals(id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name VARCHAR NOT NULL,date_of_birth DATE NOT NULL,escape_attempts INT NOT NULL,neutered 
+BOOL NOT NULL,weight_kg DECIMAL(50,2) NOT NULL, species_id INT NOT NULL,owner_id INT NOT NULL,FOREIGN KEY(owner_id) REFERENCES owners(id), FOREIGN KEY(species_id) REFERENCES species(id));
+
+-- Create a table named owners with the following columns:
+CREATE TABLE owners(id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,full_name VARCHAR NOT NULL,age INT NOT NULL,email VARCHAR(120) NOT NULL);
+
+-- Create a table named species with the following columns:
+CREATE TABLE species(id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,name VARCHAR NOT NULL);
+
+CREATE TABLE vets(id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, name VARCHAR NOT NULL, age INT NOT NULL, date_of_graduation DATE);
 
 
 -- many to many relationship between vets and species
